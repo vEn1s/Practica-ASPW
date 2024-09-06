@@ -69,8 +69,16 @@ async function main() {
 
 main();
 
+import {fetchData, ISupport, IPost, IDatum}  from "./Semana1"
 
-
+(async () => {
+    try {
+        const response = await fetchData<IPost>('https://reqres.in/api/users?page=2');
+        console.log(response);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+})();
 
 
 
