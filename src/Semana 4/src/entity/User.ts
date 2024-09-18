@@ -1,21 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
-class User {
-    @PrimaryGeneratedColumn()
-    id: number
-
-    @Column()
-    firstName: string
-
-    @Column()
-    lastName: string
-
-    @Column()
-    age: number
-}
-
-@Entity()
 class Paciente{
     @PrimaryGeneratedColumn()
     ID:number
@@ -60,4 +45,4 @@ class Resultado{
 
 }
 
-export{Paciente,Resultado,TipoExamen,User}
+export{Paciente,Resultado,TipoExamen}
