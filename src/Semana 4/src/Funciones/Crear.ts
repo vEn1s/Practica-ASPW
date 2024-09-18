@@ -1,46 +1,51 @@
-import { AppDataSource } from "../data-source"
-import { TipoExamen, Paciente,Resultado } from "../entity/User"
+import { initializeDatabase } from "../initializeDatabase";
+import { TipoExamen, Paciente, Resultado } from "../entity/User";
+import { AppDataSource } from '../data-source';
 
+export async function IngresarDatosP(Identificacion: number, Nombre: string) {
+    try {
+        await initializeDatabase(); // Inicializa la conexión solo si no está inicializada
 
-function IngresarDatosP(Identificacion,Nombre) {
-    AppDataSource.initialize().then(async () => {
-
-        const paciente = new Paciente()
-        paciente.Identificacion=Identificacion
-        paciente.Nombre=Nombre
+        const paciente = new Paciente();
+        paciente.Identificacion = Identificacion;
+        paciente.Nombre = Nombre;
       
-        await AppDataSource.manager.save(paciente)
-        console.log("Saved a new user with id: " + paciente.ID)
-        
-    }).catch(error => console.log(error))
+        await AppDataSource.manager.save(paciente);
+        console.log("Saved a new paciente with id: " + paciente.ID);
+    } catch (error) {
+        console.error("Error al guardar el paciente:", error);
+    }
 }
 
-function IngresarDatosR(ID_Paciente, ID_TipoExamen, Resultado,ValorPagado,Observacion) {
-    AppDataSource.initialize().then(async () => {
-        const resultado = new Resultado()
-        resultado.ID_Paciente=ID_Paciente
-        resultado.ID_TipoExamen=ID_TipoExamen
-        resultado.Resultado=Resultado
-        resultado.ValorPagado=ValorPagado
-        resultado.Observacion=Observacion
-        
-        await AppDataSource.manager.save(resultado)
-        console.log("Saved a new user with id: " + resultado.ID)
+export async function IngresarDatosR(ID_Paciente: number, ID_TipoExamen: number, Resultadoss: string, ValorPagado: number, Observacion: string) {
+    try {
+        await initializeDatabase(); // Inicializa la conexión solo si no está inicializada
 
-    }).catch(error => console.log(error))
-}
- function IngresarDatosTP(Descripcion, Indicaciones) {
-    AppDataSource.initialize().then(async () => {
-        const tipoExamen = new TipoExamen()
-        tipoExamen.Descripcion=Descripcion
-        tipoExamen.Indicaciones=Indicaciones
-        
-        await AppDataSource.manager.save(tipoExamen)
-        console.log("Saved a new user with id: " + tipoExamen.ID)
+        const resultado = new Resultado();
+        resultado.ID_Paciente = ID_Paciente;
+        resultado.ID_TipoExamen = ID_TipoExamen;
+        resultado.Resultadoss = Resultadoss; // Asegúrate de que esto coincida con la propiedad en la entidad
+        resultado.ValorPagado = ValorPagado;
+        resultado.Observacion = Observacion;
 
-        
- })
+        await AppDataSource.manager.save(resultado);
+        console.log("Saved a new resultado with id: " + resultado.ID);
+    } catch (error) {
+        console.error("Error al guardar el resultado:", error);
+    }
 }
 
+export async function IngresarDatosTP(Descripcion: string, Indicaciones: string) {
+    try {
+        await initializeDatabase(); // Inicializa la conexión solo si no está inicializada
 
-export{IngresarDatosP, IngresarDatosTP, IngresarDatosR}
+        const tipoExamen = new TipoExamen();
+        tipoExamen.Descripcion = Descripcion;
+        tipoExamen.Indicaciones = Indicaciones;
+  
+        await AppDataSource.manager.save(tipoExamen);
+        console.log("Saved a new tipoExamen with id: " + tipoExamen.ID);
+    } catch (error) {
+        console.error("Error al guardar el tipoExamen:", error);
+    }
+}

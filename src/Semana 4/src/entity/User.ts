@@ -1,33 +1,40 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from "typeorm";
 
 @Entity()
-class Paciente{
+class Paciente {
     @PrimaryGeneratedColumn()
-    ID:number
+    ID: number;
 
     @Column()
-    Nombre:string
+    Nombre: string;
 
     @Column()
-    Identificacion:number 
-} 
-@Entity() 
-class TipoExamen{
-    @PrimaryGeneratedColumn()
-    ID:number
+    Identificacion: number;
 
-    @Column()
-    Descripcion:string
-
-    @Column()
-    Indicaciones:string
+    @OneToMany(() => Resultado, resultado => resultado.paciente)
+    resultados: Resultado[];
 }
 
 @Entity()
-class Resultado{
+class TipoExamen {
     @PrimaryGeneratedColumn()
-    ID:number
+    ID: number;
 
+    @Column()
+    Descripcion: string;
+
+    @Column()
+    Indicaciones: string;
+
+    @OneToMany(() => Resultado, resultado => resultado.tipoExamen)
+    resultados: Resultado[];
+}
+
+@Entity()
+class Resultado {
+    @PrimaryGeneratedColumn()
+    ID: number;
+    
     @Column()
     ID_Paciente:number
 
@@ -35,14 +42,19 @@ class Resultado{
     ID_TipoExamen:number
 
     @Column()
-    Resultado:string
+    Resultadoss: string;
 
     @Column()
-    ValorPagado:number
+    ValorPagado: number;
 
     @Column()
-    Observacion:string
+    Observacion: string;
 
+    @ManyToOne(() => Paciente, paciente => paciente.resultados)
+    paciente: Paciente;
+
+    @ManyToOne(() => TipoExamen, tipoExamen => tipoExamen.resultados)
+    tipoExamen: TipoExamen;
 }
 
-export{Paciente,Resultado,TipoExamen}
+export { Paciente, Resultado, TipoExamen };
