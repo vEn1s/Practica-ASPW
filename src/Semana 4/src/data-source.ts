@@ -1,6 +1,8 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Paciente, Resultado, TipoExamen } from "./entity/User"
+import { Paciente } from "./entity/Paciente"
+import { Resultado} from "./entity/Resultado";
+import {  TipoExamen} from "./entity/TipoResultado";
 
 export const AppDataSource = new DataSource({
     type: "mysql",

@@ -1,40 +1,23 @@
-// import { AppDataSource } from "../data-source";
-// import { TipoExamen, Paciente, Resultado } from "../entity/User";
+import {  Paciente} from "../entity/Paciente";
+import { TipoExamen} from "../entity/TipoResultado";
+import {Resultado} from "../entity/Resultado";
+import { AppDataSource } from '../data-source';
+import {initializeDataSource} from "./Crear"
 
 
-// async function BuscarPaciente(id: number) {
-//     try {
-//         await AppDataSource.initialize();
-//         const paciente = await AppDataSource.manager.findOne(Paciente, { where: { ID: id } });
-//         console.log("Paciente encontrado: ", paciente);
-//         return paciente;
-//     } catch (error) {
-//         console.error("Error al buscar paciente por ID: ", error);
-//     }
-// }
 
 
-// async function BuscarTipoExamen(id: number) {
-//     try {
-//         await AppDataSource.initialize();
-//         const tipoExamen = await AppDataSource.manager.findOne(TipoExamen, { where: { ID: id } });
-//         console.log("Tipo de examen encontrado: ", tipoExamen);
-//         return tipoExamen;
-//     } catch (error) {
-//         console.error("Error al buscar tipo de examen por ID: ", error);
-//     }
-// }
+export async function ConsultaGeneral() {
+    await initializeDataSource()
+    console.log("Cargando estado General")
 
+    const pacientes = await AppDataSource.manager.find(Paciente);
+    console.log("Pacientes: ", pacientes);
+    
+    const resultados = await AppDataSource.manager.find(Resultado);
+    console.log("Resultados: ", resultados);
+    
+    const tipoExamenes = await AppDataSource.manager.find(TipoExamen);
+    console.log("Tipo Examenes: ", tipoExamenes);
 
-// async function BuscarResultado(id: number) {
-//     try {
-//         await AppDataSource.initialize();
-//         const resultado = await AppDataSource.manager.findOne(Resultado, { where: { ID: id } });
-//         console.log("Resultado encontrado: ", resultado);
-//         return resultado;
-//     } catch (error) {
-//         console.error("Error al buscar resultado por ID: ", error);
-//     }
-// }
-
-// export { BuscarPaciente, BuscarTipoExamen, BuscarResultado };
+}

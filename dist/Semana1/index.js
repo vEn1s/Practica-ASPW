@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fetchData = exports.BuscarResultadoAsync = exports.BuscarTipoExamenAsync = exports.BuscarPacienteAsync = exports.BuscarResultadoPromise = exports.BuscarTipoExamenPromise = exports.BuscarPacientePromise = exports.BuscarResultadoCB = exports.BuscarTipoExamenCB = exports.BuscarPacienteCB = void 0;
+var callback_1 = require("./callback");
+Object.defineProperty(exports, "BuscarPacienteCB", { enumerable: true, get: function () { return callback_1.BuscarPacienteCB; } });
+Object.defineProperty(exports, "BuscarTipoExamenCB", { enumerable: true, get: function () { return callback_1.BuscarTipoExamenCB; } });
+Object.defineProperty(exports, "BuscarResultadoCB", { enumerable: true, get: function () { return callback_1.BuscarResultadoCB; } });
+var asyncPromise_1 = require("./asyncPromise");
+Object.defineProperty(exports, "BuscarPacientePromise", { enumerable: true, get: function () { return asyncPromise_1.BuscarPacientePromise; } });
+Object.defineProperty(exports, "BuscarTipoExamenPromise", { enumerable: true, get: function () { return asyncPromise_1.BuscarTipoExamenPromise; } });
+Object.defineProperty(exports, "BuscarResultadoPromise", { enumerable: true, get: function () { return asyncPromise_1.BuscarResultadoPromise; } });
+var asyncPromise_2 = require("./asyncPromise");
+Object.defineProperty(exports, "BuscarPacienteAsync", { enumerable: true, get: function () { return asyncPromise_2.BuscarPacienteAsync; } });
+Object.defineProperty(exports, "BuscarTipoExamenAsync", { enumerable: true, get: function () { return asyncPromise_2.BuscarTipoExamenAsync; } });
+Object.defineProperty(exports, "BuscarResultadoAsync", { enumerable: true, get: function () { return asyncPromise_2.BuscarResultadoAsync; } });
+var post_1 = require("./post");
+Object.defineProperty(exports, "fetchData", { enumerable: true, get: function () { return post_1.fetchData; } });

@@ -1,5 +1,2 @@
 export {IngresarDatosP,  IngresarDatosTP, IngresarDatosR} from "./Funciones/Crear"
-export {initializeDatabase} from "./initializeDatabase"
-// export { BuscarPaciente, BuscarTipoExamen, BuscarResultado } from "./Funciones/Buscar"
-// export{ModificarPaciente, ModificarResultado, ModificarTipoExamen} from "./Funciones/Modificar"
-// export { EliminarPaciente, EliminarResultado, EliminarTipoExamen } from "./Funciones/Eliminar"
+export {ConsultaGeneral}from "./Funciones/Buscar"
