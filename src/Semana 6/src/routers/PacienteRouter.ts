@@ -41,7 +41,7 @@ routerPacientes.post('/', async (req, res)=>{
     }
 })
 
-routerPacientes.patch('/paciente/:id', async (req, res) => {
+routerPacientes.patch('/:id', async (req, res) => {
     const { id } = req.params;
     const { Nombre, Identificacion } = req.body;
   
