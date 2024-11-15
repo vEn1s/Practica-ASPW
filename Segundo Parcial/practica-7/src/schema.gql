@@ -1,0 +1,55 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Resultado {
+  ID: ID!
+  ID_Paciente: Float!
+  ID_TipoExamen: Float!
+  Resultadoss: String!
+  ValorPagado: Float!
+  Observacion: String!
+}
+
+type Paciente {
+  ID: ID!
+  Nombre: String!
+  Identificacion: Float!
+}
+
+type Query {
+  pacientes: [Paciente!]!
+  paciente(id: String!): Paciente!
+  resultados: [Resultado!]!
+  resultado(id: String!): Resultado!
+}
+
+type Mutation {
+  createPaciente(createPacienteInput: CreatePacienteDto!): Paciente!
+  updatePaciente(updatePacienteInput: UpdatePacienteDto!): Paciente!
+  removePaciente(id: String!): Paciente!
+  createResultado(createResultadoInput: CreateResultadoDto!): Resultado!
+  updateResultado(updateResultadoInput: UpdateResultadoDto!): Resultado!
+  removeResultado(id: String!): Resultado!
+}
+
+input CreatePacienteDto {
+  Nombre: String!
+  Identificacion: Float!
+}
+
+input UpdatePacienteDto {
+  id: String!
+}
+
+input CreateResultadoDto {
+  ID_Paciente: Float!
+  ID_TipoExamen: Float!
+  Resultadoss: String!
+  ValorPagado: Float!
+  Observacion: String!
+}
+
+input UpdateResultadoDto {
+  id: String!
+}
